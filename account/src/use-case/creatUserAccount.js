@@ -17,3 +17,4 @@ const user = {
 creatUserUseCase("Josué Lima", 'josuelima@email', 'senhaDoJosue')
 creatUserUseCase("Maria Lima", 'marialima@email', 'senhaDaMaria')
 
+console.log("contas:", contas)
