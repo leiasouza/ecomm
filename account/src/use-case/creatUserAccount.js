@@ -14,7 +14,7 @@ const user = {
     return user
 }
 
-creatUserUseCase("Josué Lima", 'josuelima@email', 'senhaDoJosue')
-creatUserUseCase("Maria Lima", 'marialima@email', 'senhaDaMaria')
+//creatUserUseCase("Josué Lima", 'josuelima@email', 'senhaDoJosue')
+//creatUserUseCase("Maria Lima", 'marialima@email', 'senhaDaMaria')
 
-console.log("contas:", contas)
+//console.log("contas:", contas)

@@ -8,5 +8,8 @@
   },
   "author": "Vanderleia Souza",
   "license": "ISC",
+  "directories": {
+    "test": "test"
+  },
   "description": ""
 }
