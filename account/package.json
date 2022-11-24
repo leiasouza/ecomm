@@ -4,7 +4,8 @@
   "main": "creatUserAccount.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node test/creatUserAccount.test.js"
   },
   "author": "Vanderleia Souza",
   "license": "ISC",
