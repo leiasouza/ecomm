@@ -3,3 +3,7 @@ services:
   product:
     image: pagonxt/product
     build: product
+  account:
+    image: pagonxt/account
+    build: account
+  
