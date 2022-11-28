@@ -7,7 +7,7 @@ const user = {
     name: nome,
     email: email,
     password: senha,
-    createdData: new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short'}).format(),
+    createdData: new Intl.DateTimeFormat('en-US', { dateStyle: 'short'}).format(),
 
 }
     contas.push(user)
