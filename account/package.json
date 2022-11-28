@@ -1,11 +1,11 @@
 {
   "name": "account",
   "version": "1.0.0",
-  "main": "creatUserAccount.js",
+  "main": "createUserAccount.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node test/creatUserAccount.test.js"
+    "start": "node test/createUserAccount.test.js"
   },
   "author": "Vanderleia Souza",
   "license": "ISC",
