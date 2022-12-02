@@ -1,9 +1,19 @@
 version: '3'
 services:
   product:
-    image: pagonxt/product
+    image: ecomm/product
     build: product
   account:
-    image: pagonxt/account
+    image: ecomm/account
     build: account
-  
+    volumes:
+      - ./account:/app
+  db:
+    image: mongo
+    container_name: mongodb 
+    environment:
+      - MONGO_INITDB_DATABASE=accounts
+      - MONGO_INITDB_ROOT_USERNAME=vanderleia
+      - MONGO_INITDB_ROOT_PASSWORD=123456
+    ports:
+    - 27017:27017
