@@ -1,5 +1,5 @@
 import { createUserUseCase } from "../src/use-case/createUserAccount.js";
 
-const user = createUserUseCase("Alice", "Alice@email.com", "senhaDaAlice");
+const user = createUserUseCase("julia", "julia@email.com", "senhaDaJulia");
 
  console.log(user);
