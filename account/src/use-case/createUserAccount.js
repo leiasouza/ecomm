@@ -12,4 +12,5 @@ export function createUserUseCase(nome, email, senha) {
 
     };
     saveAccount(user);
+    return user;
  }

@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb';
 
-async function databaseConnect() {
-    const connectionURL = 'mongodb://vanderleia:123456@mongodb:27017';
+async function getUsersCollection() {
+    const connectionURL = 'mongodb://vanderleia:123456@account_db:27017';
     const connection = new MongoClient(connectionURL);
     await connection.connect();
 
@@ -9,11 +9,9 @@ async function databaseConnect() {
     return database.collection('users');
 }
 
-    connection.close();
-
-export async function saveAccount(accounts) {
-    const collection = await databaseConnect();
-    await collection.insertOne(accounts);
+export async function saveAccount(account) {
+    const collection = await getUsersCollection();
+    await collection.insertOne(account);
     
 }
     

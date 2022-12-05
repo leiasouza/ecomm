@@ -8,9 +8,9 @@ services:
     build: account
     volumes:
       - ./account:/app
-  db:
+  account_db:
     image: mongo
-    container_name: mongodb 
+    container_name: account_db 
     environment:
       - MONGO_INITDB_DATABASE=accounts
       - MONGO_INITDB_ROOT_USERNAME=vanderleia
