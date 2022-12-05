@@ -1,12 +1,17 @@
 {
-  "name": "src",
+  "name": "ecomm",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "src/main.js",
+  
   "scripts": {
-    "start": "node src/main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon src/main.js"
+
   },
   "author": "Vanderleia Souza",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }

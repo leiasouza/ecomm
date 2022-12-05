@@ -1,15 +1,15 @@
-let contas = []
+
+import { saveAccount } from "../repositories/accountRepository.js";
 
 export function createUserUseCase(nome, email, senha) {
-const dataAtualFormatada = new Date().toISOString().substring(0, 10)  
-const user = {
-    id: contas.length + 1,
-    name: nome,
-    email: email,
-    password: senha,
-    createdData: dataAtualFormatada
+    const createdData = new Date().toISOString().substring(0, 10);
 
-}
-    contas.push(user)
-    return user
-}
+    const user = {
+        name: nome,
+        email: email,
+        password: senha,
+        createdData
+
+    };
+    saveAccount(user);
+ }
