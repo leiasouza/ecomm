@@ -9,24 +9,24 @@ const produto = {
     createdData,
     usuarioId,
     productId,
-    nome: "string",
-    valor: 10,
-    quantidade: 1,
-    descricao: "string",
-    categoria: "string",
+    nome: "Tênis",
+    valor: 100,
+    quantidade: 4,
+    descricao: "Tênis cadarço",
+    categoria: "Calçados",
     caracteristicas: [
       {
-        nome: "string",
-        descricao: "string",
+        nome: "Tênis Unisex ",
+        descricao: "Tênis preto com cadarço",
       }
     ],
     imagens: [
       {
-        url: "string",
-        descricao: "string",
+        url: "https://secure-static.vans.com.br/medias/sys_master/vans/vans/hb8/hf3/h00/h00/9572416782366/1002001070008U-01-BASEIMAGE-Hires.jpg",
+        descricao: "Tênis preto com cadarço",
       }
     ]
 }
 
-//const produtos = createProductUseCase(produto);
- console.log(produto);
+const product = await createProductUseCase(produto);
+console.log(product);
