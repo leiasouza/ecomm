@@ -1,9 +1,12 @@
-const products = []
+const produtos = [];
 
-export async function saveProduct(product) {
+export async function saveProduct(produto) {
    
-    products.push(product)
-    return products
+    produtos.push(produto)
+    return produtos
     
 }
-    
+
+export async function findProducts() {
+    return produtos;
+}
