@@ -1,6 +1,8 @@
 import { createProductUseCase } from "../../usecase/createProductUseCase.js";
+import { randomUUID } from 'crypto';
 
 const produto1 = {
+  usuarioId: randomUUID(),
   nome: "Tênis",
   valor: 30,
   quantidade: 2,
@@ -14,8 +16,7 @@ export const produto = await createProductUseCase(produto1)
 console.log("Produtos:", produto);
 
 const produto2 = { 
-
-
+  usuarioId: randomUUID(),
   nome: "Tênis",
   valor: 55,
   quantidade: 4,
