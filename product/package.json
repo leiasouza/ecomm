@@ -1,17 +1,16 @@
 {
   "name": "ecomm",
   "version": "1.0.0",
-  "description": "",
+  "main": "createProductsUseCase.js",
   "type": "module",
-  "main": "src/main.js",
-  
   "scripts": {
-    "start": "nodemon src/main.js"
-
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/test/usecase/listProductUseCase.test.js"
   },
   "author": "Vanderleia Souza",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.20"
   }
+  
 }
