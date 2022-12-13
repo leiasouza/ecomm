@@ -1,7 +1,7 @@
 
 import { saveAccount } from "../repositories/accountRepository.js";
 
-export function createUserUseCase(nome, email, senha) {
+export async function createUserUseCase(nome, email, senha) {
     const createdData = new Date().toISOString().substring(0, 10);
 
     const user = {
@@ -11,6 +11,6 @@ export function createUserUseCase(nome, email, senha) {
         createdData
 
     };
-    saveAccount(user);
+    await saveAccount(user);
     return user;
  }
