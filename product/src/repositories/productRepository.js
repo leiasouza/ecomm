@@ -1,8 +1,16 @@
+import { randomUUID } from 'crypto';
+
 const produtos = [];
 
 export async function saveProduct(produto) {
-   
-    produtos.push(produto)
+    const id = randomUUID();
+    const createdData = new Date().toISOString().substring(0, 10);
+
+    const productCreated = {id, createdData, ...produto};
+    
+    produtos.push(productCreated);
+    
+    return productCreated;
     
 }
 

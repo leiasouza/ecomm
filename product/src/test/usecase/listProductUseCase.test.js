@@ -1,9 +1,16 @@
 import { createProductUseCase } from "../../usecase/createProductUseCase.js";
-import { listProducts } from "../../usecase/listProductsUseCase.js";
-import { segundoProduto } from "./createProductUseCase.test.js";
+import { listProductsUseCase } from "../../usecase/listProductsUseCase.js";
+import { produtoExemplo } from "../data/products.js";
 
 
-const productList = listProducts();
-await createProductUseCase(segundoProduto);
-console.log("Produtos", productList)
+
+/** Imprime produtos antes de cadastrar qualquer produto */
+
+const emptyProductList = await listProductsUseCase();
+console.log("emptyProductList", emptyProductList);
+
+/** Imprime produto depois de cadastrar algum produto */
+await createProductUseCase(produtoExemplo);
+const productList = await listProductsUseCase();
+console.log("productList", JSON.stringify(productList, undefined, 2));
 
