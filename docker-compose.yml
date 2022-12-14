@@ -8,6 +8,8 @@ services:
     build: account
     volumes:
       - ./account:/app
+    ports:
+      -3000:3000
   account_db:
     image: mongo
     container_name: account_db 
