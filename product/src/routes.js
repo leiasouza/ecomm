@@ -1,8 +1,6 @@
 import { createProductUseCase } from "./usecase/createProductUseCase.js";
 import express, { Router }  from "express";
-
-
-export { router };
+import {listProductsUseCase} from "./usecase/listProductsUseCase.js"
 
 const router = new Router();
 
@@ -16,3 +14,11 @@ router.post('/products', function(request, response) {
             response.status(400).json({ status: 'error', message: error.message });
         }); 
 });
+
+router.get('/products', function(request, response){
+    listProductsUseCase().then(produtos=> {
+        response.json(produtos);
+    });
+});
+
+export { router };
