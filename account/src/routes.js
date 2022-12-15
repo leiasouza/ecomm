@@ -9,6 +9,7 @@ router.post('/accounts', function(request, response) {
     const { name, email, password } = request.body;
     createUserUseCase(name, email, password)
         .then(createUserUseCase => {
+            delete createUserUseCase.password
             response.status(201).json(createUserUseCase)
         })
         .catch(error => {
