@@ -1,8 +1,6 @@
 import { createUserUseCase } from "../src/use-case/createUserAccount.js";
 import express, { Router }  from "express";
 
-export { router };
-
 const router = new Router();
 
 router.post('/accounts', function(request, response) {
@@ -16,3 +14,5 @@ router.post('/accounts', function(request, response) {
             response.status(400).json({ status: 'error', message: error.message });
         }); 
 });
+
+export { router };
