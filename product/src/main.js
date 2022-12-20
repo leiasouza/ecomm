@@ -12,5 +12,5 @@ app.get('/healt', (request, response) =>{
 app.use(router);
 
 app.listen(3000, () => {
-    console.log('products servide is running');  
+    console.log('products service is running');  
 });

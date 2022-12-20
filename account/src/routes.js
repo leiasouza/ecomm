@@ -11,7 +11,7 @@ router.post('/accounts', async (request, response) => {
         id: createdUser._id,
         name: createdUser.name,
         email: createdUser.email,
-        createdDate: createdDate,  
+        createdDate: createdUser.createdData, 
     }); 
 });
 
