@@ -1,18 +1,18 @@
 import { createUserUseCase } from "../src/use-case/createUserAccount.js";
-import express, { Router }  from "express";
+import { Router }  from "express";
 
-const router = new Router();
+const router = Router();
 
-router.post('/accounts', function(request, response) {
+router.post('/accounts', async (request, response) => {
     const { name, email, password } = request.body;
-    createUserUseCase(name, email, password)
-        .then(createUserUseCase => {
-            delete createUserUseCase.password
-            response.status(201).json(createUserUseCase)
-        })
-        .catch(error => {
-            response.status(400).json({ status: 'error', message: error.message });
-        }); 
+    const createdUser = await createUserUseCase(name, email, password);
+
+    return response.status(201).json({
+        id: createdUser._id,
+        name: createdUser.name,
+        email: createdUser.email,
+        createdDate: createdDate,  
+    }); 
 });
 
 export { router };

@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 
-const client = new MongoClient('mongodb://vanderleia:123456@localhost:27017');
+const client = new MongoClient('mongodb://vanderleia:123456@account_db:27017');
 
 async function getUsersCollection(client) {
     const database = client.db('accounts');
@@ -15,4 +15,3 @@ export async function saveAccount(account) {
     await client.close();
     
 }
-    
