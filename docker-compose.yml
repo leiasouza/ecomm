@@ -3,11 +3,17 @@ services:
   product:
     image: ecomm/product
     build: product
+    volumes:
+      - ./product:/app
+    ports:
+      - 3000:3000
   account:
     image: ecomm/account
     build: account
     volumes:
       - ./account:/app
+    ports:
+      - 3000:3000
   account_db:
     image: mongo
     container_name: account_db 
