@@ -1,0 +1,84 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+      "title": "Accounts API Restful",
+      "description": "API Restful responssável por criação e manipulação de contas do Ecomm",
+      "contact": {
+          "email": "accounts@ecomm.com"
+      },
+      "version": "1.0.0"
+  },
+  "servers": [
+      {
+          "url": "http://localhost:3001",
+          "description": "Server I"
+      }
+  ],
+  "paths": {
+      "/accounts": {
+          "post": {
+              "summary": "Rota responsavel por criar uma conta",
+              "description": "Cria uma conta de acordo com os dados fornecidos",
+              "requestBody": {
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "$ref": "#/components/schemas/Account"
+                          },
+                          "examples": {
+                              "account": {
+                                  "value": {
+                                      "name": "Julia",
+                                      "email": "julia@mail.com",
+                                      "password": "SenhaDaJulia"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "201": {
+                      "description": "Conta criada com sucesso",
+                      "content": {
+                          "application/json": {
+                              "examples": {
+                                  "account": {
+                                      "value": {
+                                          "name": "Julia",
+                                          "email": "julia@mail.com",
+                                          "createdData": "2022-12-22"
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  },
+  "components": {
+      "schemas": {
+          "Account": {
+              "type": "object",
+              "properties": {
+                  "name": {
+                      "type": "string"
+                  },
+                  "email": {
+                      "type": "string"
+                  },
+                  "password": {
+                      "type": "string"
+                  }
+              }
+          }
+      }
+  }
+}
+
+  
+  
+   
+  

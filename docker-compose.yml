@@ -3,6 +3,7 @@ services:
   product:
     image: ecomm/product
     build: product
+    entrypoint: 'npm run start:dev'
     volumes:
       - ./product:/app
     ports:
@@ -10,6 +11,7 @@ services:
   account:
     image: ecomm/account
     build: account
+    entrypoint: 'npm run start:dev'
     volumes:
       - ./account:/app
     ports:
