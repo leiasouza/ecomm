@@ -1,85 +1,81 @@
 {
   "openapi": "3.0.1",
   "info": {
-      "title": "Accounts API Restful",
-      "description": "API Restful responssável por criação e manipulação de contas do Ecomm",
-      "contact": {
-          "email": "accounts@ecomm.com"
-      },
-      "version": "1.0.0"
+    "title": "Accounts API Restful",
+    "description": "API Restful responssável por criação e manipulação de contas do Ecomm",
+    "contact": {
+      "email": "accounts@ecomm.com"
+    },
+    "version": "1.0.0"
   },
   "servers": [
-      {
-          "url": "http://localhost:3001",
-          "description": "Server I"
-      }
+    {
+      "url": "http://localhost:3001",
+      "description": "Server 1"
+    }
   ],
   "paths": {
-      "/accounts": {
-          "post": {
-              "summary": "Rota responsavel por criar uma conta",
-              "description": "Cria uma conta de acordo com os dados fornecidos",
-              "requestBody": {
-                  "content": {
-                      "application/json": {
-                          "schema": {
-                              "$ref": "#/components/schemas/Account"
-                          },
-                          "examples": {
-                              "account": {
-                                  "value": {
-                                      "name": "Julia",
-                                      "email": "julia@mail.com",
-                                      "password": "SenhaDaJulia"
-                                  }
-                              }
-                          }
-                      }
-                  }
-              },
-              "responses": {
-                  "201": {
-                      "description": "Conta criada com sucesso",
-                      "content": {
-                          "application/json": {
-                              "examples": {
-                                  "account": {
-                                      "value": {
-                                          "name": "Julia",
-                                          "email": "julia@mail.com",
-                                          "createdData": "2022-12-22",
-                                          "id": "639bd90630375306f5ff918f"
-                                      }
-                                  }
-                              }
-                          }
-                      }
-                  }
+    "/accounts": {
+      "post": {
+        "summary": "Rota responsavel por criar uma conta",
+        "description": "Cria uma conta de acordo com os dados fornecidos",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountData"
               }
+            }
           }
+        },
+        "responses": {
+          "201": {
+            "description": "Conta criada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CretatedAccountData"
+                }
+              }
+            }
+          }
+        }
       }
-  },
-  "components": {
+    },
+    "components": {
       "schemas": {
-          "Account": {
-              "type": "object",
-              "properties": {
-                  "name": {
-                      "type": "string"
-                  },
-                  "email": {
-                      "type": "string"
-                  },
-                  "password": {
-                      "type": "string"
-                  }
-              }
+        "AccountData": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
           }
+        }
       }
+    },
+    "CretatedAccountData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "createdData": {
+          "type": "string"
+        }
+      }
+    }
   }
 }
-
-  
-  
-   
-  

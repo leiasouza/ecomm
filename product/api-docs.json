@@ -3,127 +3,111 @@
   "info": {
     "title": "Products/Ecomm API Restful ",
     "description": "API Restful responssável por criação e manipulação de Produtos do Ecomm",
-    "contact":{
+    "contact": {
       "email": "products@ecomm.com"
     },
     "version": "1.0.0"
   },
   "servers": [
     {
-        "url": "http://localhost:3000",
-        "description": "Server I"
+      "url": "http://localhost:3000",
+      "description": "Server I"
     }
-   ],
-   "paths": {
-       "/product": {
-            "summary": "Rota para criar produto",
-            "description": "Cria um produto com os dados fornecidos pelo cliente",
-            "post": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/ProductData"
-                            }
-                        }
-                    }
-                },            
-               "responses": {
-                   "201": {
-                       "description": "Produto criado com sucesso",
-                       "content": {
-                           "application/json": {
-                               "schema": {
-                                   "type": "object",
-                                   "properties": {
-                                       "usuarioId": { "type": "string" },
-                                       "createdData":{ "type": "string" },
-                                       "id": { "type": "string" },
-                                       "nome": { "type": "string" },
-                                       "descricao": { "type": "string" },
-                                       "categoria": { "type": "string" },
-                                       "quantidade": { "type": "integer" },
-                                       "valor": { "type": "number" },
-                                       "caracteristicas": { 
-                                           "type": "array",
-                                           "items": {
-                                               "properties": {
-                                                   "nome": { "type": "string" },
-                                                   "descrição": { "type": "string" }
-                                                }
-                                            }
-                                        },
-                                        "imagens": {
-                                            "type": "array",
-                                            "items": {
-                                                "properties": {
-                                                    "url": { "type": "string" },
-                                                    "descricao": { "type": "string" } 
-                                                }
-                                            }
-                                        }
-                                    }
-                                       
-                               }
-                            }
-                        }
-                    }
-                }
+  ],
+  "paths": {
+    "/product": {
+      "summary": "Rota para criar produto",
+      "description": " Com as informações fornecidas pelo cliente cria-se um produto no banco de dados ",
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductData"
+              }
             }
-        }
-    },
-   "components": {
-      "schemas": {
-        "ImageData": {
-            "type": "object",
-            "properties": {
-                "url": {
-                    "type": "string"
-                },
-                "descricao": {
-                    "type": "string"
-                }
-            }
+          }
         },
-        "caracteristicaData": {
-            "type": "object",
-            "properties": {
-                "nome": {
-                    "type": "string"
-                },
-                "descricao": {
-                    "type": "string"
+        "responses": {
+          "201": {
+            "description": "Produto criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatedProductData"
                 }
+              }
             }
-        },
-        "ProductData": {
-            "type": "object",
-            "properties": {
-                "usuarioId": { "type": "string" },
-                "createdData":{ "type": "string" },
-                "id": { "type": "string" },
-                "nome": { "type": "string" },
-                "descricao": { "type": "string" },
-                "categoria": { "type": "string" },
-                "quantidade": { "type": "integer" },
-                "valor": { "type": "number" },
-                "caracteristicas": { 
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/caracteristicaData" 
-                     }
-                 },
-                 "imagens": {
-                    "type": "array",
-                    "items": {
-                       "$ref": "#/components/schemas/ImageData"
-                    }
-                 }
-            }
+          }
         }
-
       }
-
     }
+  },
+  "get": {
+    "responses": {
+      "200": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ProductData"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ImageData": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          }
+        }
+      },
+      "caracteristicaData": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          }
+        }
+      },
+      "ProductData": {
+        "type": "object",
+        "properties": {
+          "usuarioId": { "type": "string" },
+          "createdData": { "type": "string" },
+          "id": { "type": "string" },
+          "nome": { "type": "string" },
+          "descricao": { "type": "string" },
+          "categoria": { "type": "string" },
+          "quantidade": { "type": "integer" },
+          "valor": { "type": "number" },
+          "caracteristicas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaracteristicaData"
+            }
+          },
+          "imagens": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImageData"
+            }
+          }
+        }
+      }
+    }
+  }
 }
- 
