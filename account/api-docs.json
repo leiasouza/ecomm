@@ -16,14 +16,14 @@
   ],
   "paths": {
     "/accounts": {
+      "summary": "Rota responsavel por criar uma conta",
+      "description": "Cria uma conta de acordo com os dados fornecidos",
       "post": {
-        "summary": "Rota responsavel por criar uma conta",
-        "description": "Cria uma conta de acordo com os dados fornecidos",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AccountData"
+                "$ref": "#/components/schemas/Account"
               }
             }
           }

@@ -11,11 +11,11 @@
   "servers": [
     {
       "url": "http://localhost:3000",
-      "description": "Server I"
+      "description": "Server 1"
     }
   ],
   "paths": {
-    "/product": {
+    "/products": {
       "summary": "Rota para criar produto",
       "description": " Com as informações fornecidas pelo cliente cria-se um produto no banco de dados ",
       "post": {
@@ -29,12 +29,12 @@
           }
         },
         "responses": {
-          "201": {
-            "description": "Produto criado com sucesso",
-            "content": {
-              "application/json": {
+            "201": {
+             "description": "Produto criado com sucesso",
+              "content": {
+               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatedProductData"
+                 "$ref": "#/components/schemas/CreatedProductData"
                 }
               }
             }
@@ -86,18 +86,25 @@
       "ProductData": {
         "type": "object",
         "properties": {
-          "usuarioId": { "type": "string" },
-          "createdData": { "type": "string" },
-          "id": { "type": "string" },
-          "nome": { "type": "string" },
-          "descricao": { "type": "string" },
-          "categoria": { "type": "string" },
-          "quantidade": { "type": "integer" },
-          "valor": { "type": "number" },
+          "usuarioId": { 
+            "type": "string" },
+          "createdData": {
+             "type": "string" },
+          "id": { 
+            "type": "string" },
+          "nome": { 
+            "type": "string" },
+          "descricao": { 
+            "type": "string" },
+          "categoria": { 
+            "type": "string" },
+          "quantidade": { 
+            "type": "integer" },
+          "valor": { 
+            "type": "number" },
           "caracteristicas": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CaracteristicaData"
             }
           },
           "imagens": {
