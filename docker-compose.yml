@@ -8,6 +8,18 @@ services:
       - ./product:/app
     ports:
       - 3000:3000
+
+  product_db:
+    image: mysql
+    container_name: product_db 
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=true
+      - MYSQL_DATABASE=products
+      - MYSQL_USER=vanderleia
+      - MYSQL_PASSWORD=23456
+    ports:
+    - 3306:3306
+
   account:
     image: ecomm/account
     build: account
