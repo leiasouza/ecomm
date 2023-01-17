@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "env-cmd nodemon --ext js,json,yaml src/main.js",
     "start": "node src/main.js",
-    "test": "env-cmd -f .env node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles",
+    "test": "env-cmd -f .env.test node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "migrate": "npx sequelize-cli db:migrate",

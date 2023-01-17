@@ -1,10 +1,10 @@
 import { randomUUID } from 'crypto';
 
 export const productExample = {
-    user_Id: randomUUID(),
+    user_id: randomUUID(),
     name: "Tênis",
     value: 30,
-    quantiry: 2,
+    quantity: 2,
     description: "Tenis preto cocadarço",
     category: "Calçados",
     fetures: [{name: "cor", description: "preto"}],
