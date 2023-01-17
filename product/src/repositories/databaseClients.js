@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
 
-const client = new Sequelize('mysql://vanderleia:23456@product_db:3306/products');
+const client = new Sequelize(process.env.DATABASE_URL);
 
 export default client;
