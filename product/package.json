@@ -6,9 +6,7 @@
   "scripts": {
     "start:dev": "env-cmd nodemon --ext js,json,yaml src/main.js",
     "start": "node src/main.js",
-    "test": "env-cmd -f .env.test node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test": "env-cmd -f .env.test node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles --verbose",
     "migrate": "npx sequelize-cli db:migrate",
     "migrate:undo": "npx sequelize-cli db:migrate:undo"
   },
@@ -21,7 +19,7 @@
     "supertest": "^6.3.3"
   },
   "dependencies": {
-    "@types/jest": "^29.2.5",
+    
     "express": "^4.18.2",
     "mysql2": "^2.3.3",
     "sequelize": "^6.28.0",
