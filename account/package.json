@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start:dev": "env-cmd nodemon --ext js,json,yaml src/main.js",
-    "start": "node src/main.js",
+    "start": "env-cmd node --trace-warnings src/main.js",
     "test": "env-cmd -f .env.test node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles --verbose"
   },
   "author": "Vanderleia Souza",
