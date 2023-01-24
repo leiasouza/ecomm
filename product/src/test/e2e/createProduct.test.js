@@ -1,13 +1,15 @@
 import { productExample } from "../data/products.js";
 import { app } from "../../app.js";
 import request from "supertest";
-import client from "../../repositories/databaseClients.js";
+import { findProducts } from "../../repositories/productRepository.js";
+import { clearProductTable } from "../data/helpers/products.js";
+
 
 describe("Criação de produto", () => {
-  afterAll(async() => {
-    await client.close();
-  });
-
+  //afterEach(async() => {
+    //await clearProductTable();
+  //});
+  
   it("cria novo produto", async () => {
     await request(app)
       .post("/products")
