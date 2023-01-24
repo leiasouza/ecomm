@@ -16,6 +16,14 @@ export async function saveAccount(account) {
     
 }
 
+export async function findUserByEmail(email) {
+    await client.connect();
+    const usersCollection = await getUsersCollection(client);
+    const user = await usersCollection.findOne({ email });
+    await client.close();
+    return user;
+}
+
 // export async function listAccounts() {
 //     const usersCollection = await databaseConnect();
 //     const user = usersCollection.find().toArray();
@@ -23,12 +31,6 @@ export async function saveAccount(account) {
 //     return user;
 // }
 
-export async function findAccountByeEmail(email) {
-    const usersCollection = await getUsersCollection(client);
-    const user = await usersCollection.findOne({ email });
-    await client.close();
-    return user;
-}
 
 // export async function existsAccountById(id) {
 //     const account = await findAccountById(id);
