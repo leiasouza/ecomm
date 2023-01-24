@@ -1,8 +1,8 @@
 import { MongoClient } from 'mongodb';
 
-const client = new MongoClient('mongodb://vanderleia:123456@account_db:27017');
+export const client = new MongoClient('mongodb://vanderleia:123456@localhost:27017');
 
-async function getUsersCollection(client) {
+export async function getUsersCollection(client) {
     const database = client.db('accounts');
     const usersCollection = database.collection('users');
     return usersCollection;
