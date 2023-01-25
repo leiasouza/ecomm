@@ -19,6 +19,5 @@ export async function findUserByEmail(email) {
     await client.connect();
     const usersCollection = await getUsersCollection(client);
     const user = await usersCollection.findOne({ email });
-    await client.close();
     return user;
 }
