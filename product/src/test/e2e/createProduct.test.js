@@ -1,15 +1,8 @@
 import { productExample } from "../data/products.js";
 import { app } from "../../app.js";
 import request from "supertest";
-import { findProducts } from "../../repositories/productRepository.js";
-import { clearProductTable } from "../data/helpers/products.js";
-
 
 describe("Criação de produto", () => {
-  //afterEach(async() => {
-    //await clearProductTable();
-  //});
-  
   it("cria novo produto", async () => {
     await request(app)
       .post("/products")
@@ -36,7 +29,7 @@ describe("Criação de produto", () => {
             product_id: body.id,
             createdAt: expect.any(String),
             updatedAt: expect.any(String),
-          })),
+          }))
         });
       });
   });
