@@ -3,16 +3,16 @@ import { generateToken } from "../helpers/token.js";
 import {findUserByEmail } from "../repositories/accountRepository.js";
 
 export async function createUserTokenUseCase(email, password){
-    const possibleUser = await findUserByEmail(email);
+    const userFound = await findUserByEmail(email);
 
-    if(!possibleUser){
+    if(!userFound){
         return null;
     }
 
-    const passwordIsMatch = await comparePassword(password, possibleUser.password);
+    const passwordIsMatch = await comparePassword(password, userFound.password);
 
     if (passwordIsMatch) {
-        return generateToken(possibleUser._id);
+        return generateToken(userFound._id);
 
     }
 
