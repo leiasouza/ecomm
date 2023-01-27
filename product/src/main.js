@@ -7,7 +7,7 @@ import client from './repositories/databaseClients.js';
 const swaggerDocs = yaml.load('./docs.yaml');
 app.use('/docs', swaggerExpress.serve, swaggerExpress.setup(swaggerDocs));
 
-app.listen(3000, () => {
+app.listen(process.env.SERVER_PORT, () => {
     console.log('products service is running');  
 client.authenticate()
     .then(( ) => { console.log('database connected') })
