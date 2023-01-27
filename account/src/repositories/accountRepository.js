@@ -21,3 +21,9 @@ export async function findUserByEmail(email) {
     const user = await usersCollection.findOne({ email });
     return user;
 }
+
+export async function existsUserByEmail(email) {
+    const user = await findUserByEmail(email);
+
+    return user !== null;
+}

@@ -4,16 +4,15 @@ import { createUserTokenUseCase } from "./use-case/createUserToken.js";
 
 const router = Router();
 
-router.post("/accounts", async (request, response) => {
+router.post("/accounts", function (request, response) {
   const { name, email, password } = request.body;
-  const createdUser = await createUserUseCase(name, email, password);
-
-  return response.status(201).json({
-    id: createdUser._id,
-    name: createdUser.name,
-    email: createdUser.email,
-    createdDate: createdUser.createdDate,
-  });
+  createUserUseCase(name, email, password)
+    .then((createdAccount) => {
+      response.status(201).json(createdAccount);
+    })
+    .catch((error) => {
+      response.status(400).json({ status: "error", message: error.message });
+    });
 });
 
 router.post("/tokens", async (request, response) => {
