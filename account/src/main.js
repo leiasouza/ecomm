@@ -6,6 +6,6 @@ const swaggerDocs = yamljs.load('./docs.yaml');
 
 app.use('/docs', swaggerExpress.serve, swaggerExpress.setup(swaggerDocs))
 
-app.listen(3000, () => {
+app.listen(process.env.SERVER_PORT, () => {
     console.log('accounts service is running');
 });
