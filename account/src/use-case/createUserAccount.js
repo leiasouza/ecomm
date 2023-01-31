@@ -13,7 +13,7 @@ export async function createUserUseCase(name, email, password) {
   }
 
   const createdDate = new Date().toISOString().substring(0, 10);
-  const passwordHash = bcrypt.hashSync(password, 10);
+  const passwordHash = bcrypt.hashSync(password, process.env.PASSWORD_SALT );
   const user = {
     name,
     email,
