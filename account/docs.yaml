@@ -51,16 +51,6 @@ paths:
                 password:
                   type: string
       responses:
-        401:
-          description: Error with account data
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:  
-                    type: string
-          
         201:
           description: Token account created
           content:
@@ -70,7 +60,15 @@ paths:
                 properties: 
                   token:
                     type: string
-          
+        401:
+          description: Error with account data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:  
+                    type: string
 
 components:
   schemas:
