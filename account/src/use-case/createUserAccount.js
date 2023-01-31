@@ -8,8 +8,8 @@ export async function createUserUseCase(name, email, password) {
   const userAlreadyExists = await existsUserByEmail(email);
 
   if (userAlreadyExists) {
-    console.error("e-mail is already registered in our base.", email);
-    throw new Error("e-mail is already registered in our base.");
+    console.error("e-mail is already registered.", email);
+    throw new Error("e-mail is already registered.");
   }
 
   const createdDate = new Date().toISOString().substring(0, 10);
