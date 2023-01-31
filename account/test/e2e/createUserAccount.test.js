@@ -1,11 +1,13 @@
 import { app } from "../../src/app.js";
 import request from "supertest";
-import { client, getUsersCollection } from "../../src/repositories/accountRepository.js";
-
-
+import { createUserUseCase } from "../../src/use-case/createUserAccount.js";
+import {
+  client,
+  getUsersCollection,
+} from "../../src/repositories/accountRepository.js";
 
 describe("POST em accounts", () => {
-  afterEach( async() => {
+  afterEach(async () => {
     await client.connect();
     const usersCollection = await getUsersCollection(client);
     await usersCollection.deleteMany({});
@@ -28,6 +30,25 @@ describe("POST em accounts", () => {
           name: "Alice",
           email: "alice@gmail.com",
           createdDate: new Date().toISOString().substring(0, 10),
+        });
+      });
+  });
+
+  it("should not create an user given an already used e-mail", async () => {
+    await createUserUseCase("Leia", "leia@gmail.com", "senhaDaLeia");
+    await request(app)
+      .post("/accounts")
+      .set("Content-Type", "application/json")
+      .set("Accept", "application/json")
+      .send({
+        name: "Leia",
+        email: "leia@gmail.com",
+        password: "senhaDaLeia",
+      })
+      .expect(400)
+      .expect(({ body }) => {
+        expect(body).toEqual({
+          message: "e-mail is already registered",
         });
       });
   });

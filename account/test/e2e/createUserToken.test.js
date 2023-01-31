@@ -19,7 +19,7 @@ describe("POST em accounts", () => {
       .post("/tokens")
       .set("Content-Type", "application/json")
       .set("Accetp", "application/json")
-      .send({ email: "alice@gmail.com", password: "sehaDaAlice" })
+      .send({ email: "alice@gmail.com", password: "senhaDaAlice" })
       .expect(201)
       .expect(({ body }) => {
         expect(body).toEqual({ token: expect.any(String) });

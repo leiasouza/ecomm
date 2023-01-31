@@ -22,8 +22,8 @@ export async function findUserByEmail(email) {
     return user;
 }
 
-export async function existsUserByEmail(email) {
-    const user = await findUserByEmail(email);
+export async function existsByEmail(email) {
+    const userFound = await findUserByEmail(email);
 
-    return user !== null;
+    return !!userFound;
 }
