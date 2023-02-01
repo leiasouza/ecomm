@@ -57,7 +57,7 @@ paths:
               schema:
                 type: object
                 properties: 
-                  token:
+                  message:
                     type: string
         201:
           description: Token account created
@@ -66,7 +66,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  message:  
+                  token:  
                     type: string
 
 components:
