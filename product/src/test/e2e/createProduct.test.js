@@ -9,7 +9,7 @@ describe("Criação de produto", () => {
     await cleanProductTable();
   });
 
-  it("cria novo produto", async () => {
+  it("must create a product with the required data", async () => {
     await request(app)
       .post("/products")
       .set("Content-Type", "application/json")

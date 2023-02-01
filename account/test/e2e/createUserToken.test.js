@@ -27,12 +27,12 @@ describe("POST em accounts", () => {
   });
 
   it("should not generate a token given incorrect password account", async () => {
-    await createUserUseCase("Alice", "alice@gmail.com", "senhaDaAliceee");
+    await createUserUseCase("Alice", "alice@gmail.com", "senhaDaAlice");
     await request(app)
       .post("/tokens")
       .set("Content-Type", "application/json")
       .set("Accetp", "application/json")
-      .send({ email: "Alice@gmail.com", password: "senhaDaAlice" })
+      .send({ email: "alice@gmail.com", password: "senhaDaAliceeee" })
       .expect(401)
       .expect(({ body }) => {
         expect(body).toEqual({ message: "user e-mail or password incorrect" });
@@ -40,12 +40,12 @@ describe("POST em accounts", () => {
   });
 
   it("should not generate a token given incorrect email account", async () => {
-    await createUserUseCase("Alice", "aliceaa@gmail.com", "senhaDaAlice");
+    await createUserUseCase("Alice", "alice@gmail.com", "senhaDaAlice");
     await request(app)
       .post("/tokens")
       .set("Content-Type", "application/json")
       .set("Accetp", "application/json")
-      .send({ email: "Alice@gmail.com", password: "senhaDaAlice" })
+      .send({ email: "aliceeee@gmail.com", password: "senhaDaAlice" })
       .expect(401)
       .expect(({ body }) => {
         expect(body).toEqual({ message: "user e-mail or password incorrect" });
@@ -57,7 +57,7 @@ describe("POST em accounts", () => {
       .post("/tokens")
       .set("Content-Type", "application/json")
       .set("Accetp", "application/json")
-      .send({ email: "Alice@gmail.com", password: "asenhaDaAlice" })
+      .send({ email: "alice@gmail.com", password: "asenhaDaAlice" })
       .expect(401)
       .expect(({ body }) => {
         expect(body).toEqual({ message: "user e-mail or password incorrect" });
