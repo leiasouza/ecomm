@@ -1,11 +1,11 @@
 import bcrypt from "bcryptjs";
 import {
-  existsByEmail,
+  findUserByEmail,
   saveAccount,
 } from "../repositories/accountRepository.js";
 
 export async function createUserUseCase(name, email, password) {
-  const userAlreadyExists = await existsByEmail(email);
+  const userAlreadyExists = await findUserByEmail(email);
 
   if (userAlreadyExists) {
     throw new Error("e-mail is already registered");
