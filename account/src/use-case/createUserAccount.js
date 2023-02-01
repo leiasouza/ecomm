@@ -1,16 +1,24 @@
-import  bcrypt from 'bcryptjs';
-import { saveAccount } from "../repositories/accountRepository.js";
+import bcrypt from "bcryptjs";
+import {
+  findUserByEmail,
+  saveAccount,
+} from "../repositories/accountRepository.js";
 
 export async function createUserUseCase(name, email, password) {
-    const createdDate = new Date().toISOString().substring(0, 10);
-    const passwordHash = bcrypt.hashSync(password ,10);
-    const user = {
-        name,
-        email,
-        password: passwordHash,
-        createdDate
+  const userAlreadyExists = await findUserByEmail(email);
 
-    };
-    await saveAccount(user);
-    return user;
- }
+  if (userAlreadyExists) {
+    throw new Error("e-mail is already registered");
+  }
+
+  const createdDate = new Date().toISOString().substring(0, 10);
+  const passwordHash = bcrypt.hashSync(password, process.env.PASSWORD_SALT| Number );
+  const user = {
+    name,
+    email,
+    password: passwordHash,
+    createdDate,
+  };
+  await saveAccount(user);
+  return user;
+}
