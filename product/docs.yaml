@@ -9,11 +9,10 @@ info:
     email: devs@ecomm.com.br
 servers:
   - url: "http://localhost:3000"
-    description: Server 1
 paths:
   /products:
     summary: creates a product
-    description: 'Given provided product data, creates a product in the database'
+    description: "Given provided product data, creates a product in the database"
     post:
       security:
         - bearerAuth: []
@@ -21,15 +20,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateProductRequest'
+              $ref: "#/components/schemas/CreateProductRequest"
       responses:
         201:
           description: Product created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductResponse'
-        400:
+                $ref: "#/components/schemas/ProductResponse"
+        401:
+          description: authentication required
           content:
             application/json:
               schema:
@@ -37,7 +37,8 @@ paths:
                 properties:
                   message:
                     type: string
-        401:
+        400:
+          description: authorization header malformed
           content:
             application/json:
               schema:
@@ -46,6 +47,7 @@ paths:
                   message:
                     type: string
         403:
+          description: forbiden
           content:
             application/json:
               schema:
@@ -56,18 +58,17 @@ paths:
     get:
       responses:
         200:
+          description: Product created
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ProductResponse'
-        
-          
+                  $ref: "#/components/schemas/ProductResponse"
 
 components:
   securitySchemes:
-    bearerAuth: 
+    bearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
@@ -75,7 +76,7 @@ components:
     ImageResponse:
       type: object
       properties:
-        id: 
+        id:
           type: integer
         url:
           type: string
@@ -88,8 +89,8 @@ components:
     FetureResponse:
       type: object
       properties:
-        id: 
-          type: integer 
+        id:
+          type: integer
         name:
           type: string
         description:
@@ -101,9 +102,9 @@ components:
     ProductResponse:
       type: object
       properties:
-        id: 
+        id:
           type: integer
-        user_id: 
+        user_id:
           type: string
         name:
           type: string
@@ -119,14 +120,14 @@ components:
           type: string
         updatedDate:
           type: string
-        features:
+        fetures:
           type: array
           items:
-            $ref: '#/components/schemas/FetureResponse'
+            $ref: "#/components/schemas/FetureResponse"
         images:
           type: array
           items:
-            $ref: '#/components/schemas/ImageResponse'
+            $ref: "#/components/schemas/ImageResponse"
     CreateProductRequest:
       type: object
       properties:
@@ -143,11 +144,11 @@ components:
         fetures:
           type: array
           items:
-            $ref: '#/components/schemas/CreateFetureRequest'
+            $ref: "#/components/schemas/CreateFetureRequest"
         images:
           type: array
           items:
-            $ref: '#/components/schemas/CreateImageRequest'
+            $ref: "#/components/schemas/CreateImageRequest"
     CreateImageRequest:
       type: object
       properties:
