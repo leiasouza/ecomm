@@ -47,9 +47,35 @@ describe("POST em accounts", () => {
       })
       .expect(400)
       .expect(({ body }) => {
-        expect(body).toEqual({
-          message: "e-mail is already registered",
-        });
+        expect(body).toEqual([
+          {
+            property: "email",
+            message: "email already used",
+          },
+        ]);
+      });
+  });
+
+  it("should not create an user given invalid e-mail", async () => {
+    await request(app)
+      .post("/accounts")
+      .set("Content-Type", "application/json")
+      .set("Accept", "application/json")
+      .send({
+        name: "Leia",
+        email: "leiagmail.com",
+        password: "senhaDaLeia",
+      })
+      .expect(400)
+      .expect(({ body }) => {
+        expect(body).toEqual(
+          expect.arrayContaining([
+            {
+              message: expect.any(String),
+              property: "email",
+            },
+          ])
+        );
       });
   });
 });
