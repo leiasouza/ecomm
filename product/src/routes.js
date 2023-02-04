@@ -2,7 +2,7 @@ import { createProductUseCase } from "./usecase/createProductUseCase.js";
 import { Router } from "express";
 import { listProductsUseCase } from "./usecase/listProductsUseCase.js";
 import { decriptToken } from "./helpers/token.js";
-import { randomUUID } from "crypto";
+
 
 const router = Router();
 
@@ -26,8 +26,9 @@ router.post("/products", async (request, response) => {
   if (!userId) {
     return response.status(403).json({ message: "forbidden" });
   }
+
   const productToCreate = request.body;
-  const { hasErrors, errors, produto } = await createProductUseCase(
+  const { hasErrors, errors, product } = await createProductUseCase(
     productToCreate,
     userId
   );
@@ -36,7 +37,7 @@ router.post("/products", async (request, response) => {
     return response.status(400).json(errors);
   }
 
-  return response.status(201).json(produto);
+  return response.status(201).json(product);
 });
 
 router.get("/products", async (request, response) => {
