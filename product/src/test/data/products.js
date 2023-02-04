@@ -6,7 +6,7 @@ export const productExample = {
   value: 30,
   quantity: 2,
   description:
-    "Tenis preto cocadarço,Apesar de mais doze pares terem sido encomendados, eles ainda não haviam sido feitos, então Paul Van Doren e Lee correram para a fábrica para fazerem os pares e pediram que os clientes voltassem no fim da tarde. Ao fim da tarde quando eles voltaram, perceberam que haviam esquecido de separar troco para darem aos compradores, então deixaram que levassem os sapatos e pediram que retornassem no dia seguinte para pagar. E foi o que aconteceu, todos voltaram para pagar pelas suas compras. ",
+    "Tenis preto cocadarço, Apesar de mais doze pares terem sido encomendados, eles ainda não haviam sido feitos, então Paul Van Doren e Lee correram para a fábrica para fazerem os pares e pediram que os clientes voltassem no fim da tarde. Ao fim da tarde quando eles voltaram, perceberam que haviam esquecido de separar troco para darem aos compradores, então deixaram que levassem os sapatos e pediram que retornassem no dia seguinte para pagar.",
   category: "Calçados",
   fetures: [
     { name: "cor", description: "preto" },
