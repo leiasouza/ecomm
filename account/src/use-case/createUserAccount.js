@@ -6,12 +6,18 @@ import {
 import joi from "joi";
 
 const accountValidator = joi.object({
-  email: joi.string().email().required(),
-  password: joi.string().min(8).required(),
+  email: joi.string().email(),
+  password: joi.string().trim().min(8),
 });
 
 export async function createUserUseCase(name, email, password) {
-  const { error } = accountValidator.validate({ email, password });
+  const { error } = accountValidator.validate(
+    {
+      email,
+      password
+    },
+    { abortEarly: false }
+  );
 
   if (error) {
     return {
@@ -20,14 +26,23 @@ export async function createUserUseCase(name, email, password) {
         message: error.message,
         property: error.path.at(0),
       })),
-      account: {},
+      account: {}
     };
   }
 
   const userAlreadyExists = await findUserByEmail(email);
 
   if (userAlreadyExists) {
-    throw new Error("e-mail is already registered");
+    return {
+      hasError: true,
+      errors: [
+        {
+          property: "email",
+          message: "email already used"
+        },
+      ],
+      account: {}
+    };
   }
 
   const createdDate = new Date().toISOString().substring(0, 10);
@@ -45,7 +60,7 @@ export async function createUserUseCase(name, email, password) {
   await saveAccount(user);
   return {
     hasError: false,
-    error: undefined,
-    account: {...user, password: undefined }
+    errors: undefined,
+    account: { ...user, id: user._id, password: undefined, _id: undefined },
   };
 }
