@@ -35,6 +35,8 @@ paths:
                 properties:
                   message:
                     type: string
+                  property: 
+                    type: string
    /tokens:
     summary: creates an account token
     description: 'Given email and password, creates an account token'
