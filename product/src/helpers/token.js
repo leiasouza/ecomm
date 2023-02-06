@@ -7,7 +7,7 @@ export function decriptToken (token) {
     
         return {userId};
     } catch(error){
-        //console.log('error when verifying token', error.message);
+        console.log('error when verifying token', error.message);
         return{};
 
     }
