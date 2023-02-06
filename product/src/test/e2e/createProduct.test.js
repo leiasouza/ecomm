@@ -57,7 +57,7 @@ describe("Criação de produto", () => {
       .set("Content-Type", "application/json")
       .set("Accept", "application/json")
       .set("Authorization", "header-errado")
-      .expect(400)
+      .expect(401)
       .expect(({ body }) => {
         expect(body).toEqual({ message: "authorization header malformed" });
       });
@@ -72,6 +72,20 @@ describe("Criação de produto", () => {
       .expect(403)
       .expect(({ body }) => {
         expect(body).toEqual({ message: "forbidden" });
+      });
+  });
+  it("should not create a product when user id is not valid", async () => {
+    await request(app)
+      .post("/products")
+      .set("Content-Type", "application/json")
+      .set("Accept", "application/json")
+      .set("Authorization", `Bearer ${generateToken("id-do-usuario")}`)
+      .send({...productExample, description: '' })
+      .expect(400)
+      .expect(({ body }) => {
+        expect(body).toEqual([
+          { property: "description", message: expect.any(String) }
+        ]);
       });
   });
 });
